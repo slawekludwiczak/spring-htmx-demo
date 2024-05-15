@@ -1,0 +1,32 @@
+name: movieclub
+
+services:
+  mysql:
+    image: mysql:8.4.0
+    container_name: mysql
+    volumes:
+      - db:/var/lib/mysql
+    healthcheck:
+      test: mysqladmin ping --protocol tcp
+      interval: 5s
+      timeout: 1s
+      retries: 3
+      start_period: 10s
+
+  application:
+    build: .
+    image: slawekludwiczak/movieclub
+    depends_on:
+      mysql:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: wget --spider localhost:8080
+      interval: 5s
+      timeout: 1s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  db:
