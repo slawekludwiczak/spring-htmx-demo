@@ -1,3 +1,5 @@
+--liquibase formatted sql
+--changeset splitStatements:true endDelimiter:;
 insert into
     users (email, password)
 values

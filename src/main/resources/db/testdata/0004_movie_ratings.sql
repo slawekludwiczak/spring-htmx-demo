@@ -1,3 +1,5 @@
+--liquibase formatted sql
+--changeset splitStatements:true endDelimiter:;
 insert into
     movie_rating (user_id, movie_id, rating)
 values

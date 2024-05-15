@@ -1,3 +1,5 @@
+--liquibase formatted sql
+--changeset splitStatements:true endDelimiter:;
 insert into movie (title, original_title, release_year, promoted, genre_id, description, short_description, youtube_trailer_id) values ('Goodbye Solo', 'Captain from Castile', 1995, false, 9, 'Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.
 
 Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.
