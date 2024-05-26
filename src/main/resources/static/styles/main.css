@@ -187,6 +187,7 @@ i powinna zajmować większość dostępnej przestrzeni
 /*Usunięcie przezroczystości po najechaniu na przycisk*/
 .movie-rating-button:hover {
     opacity: 1;
+    cursor: pointer;
 }
 /*Odstępy między elementami w ramce z głosowaniem*/
 .movie-rating-container > * {
