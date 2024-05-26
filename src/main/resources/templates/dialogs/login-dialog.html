@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login dialog</title>
+</head>
+<body>
+<dialog th:fragment="login-dialog">
+    <span class="close">
+        &#10006;
+    </span>
+    <h2 class="heading">Zaloguj się</h2>
+    <form th:hx-post="@{/login}"
+          hx-on::after-request="processLogin(event)"
+          method="post"
+          class="mc-form">
+        <label for="username">Adres email</label>
+        <input id="username" name="username" placeholder="nazwa użytkownika">
+        <label for="password">Hasło</label>
+        <input id="password" name="password" placeholder="hasło" type="password">
+        <button type="submit">Zaloguj się</button>
+    </form>
+    <p class="login-error" hidden>Błędne dane logowania.</p>
+    <p class="registration-link">Nie masz jeszcze konta? <a href="#" th:href="@{/rejestracja}">Zarejestruj się</a></p>
+</dialog>
+</body>
+</html>

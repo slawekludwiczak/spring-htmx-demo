@@ -7,10 +7,10 @@
 <head>
     <!-- Ustawiamy tytuł -->
     <title th:text="|${movie.title} - MovieClub|">Tytuł filmu - MovieClub</title>
-    <script th:src="@{/webjars/htmx.org/dist/htmx.min.js}"></script>
 </head>
 <body>
 <div class="container">
+
     <main class="main-content" layout:fragment="content">
         <section class="movie">
             <!-- Podsumowanie -->
@@ -51,31 +51,37 @@
                 </div>
                 <!-- Dodajemy th:action, formularz wyświetlamy tylko zalogowanemu użytkownikowi -->
                 <form th:hx-post="@{/api/ratings}"
-                      hx-swap="outerHTML swap:1s"
-                      hx-target=".movie-rating-buttons"
-                      hx-indicator="#spinner"
-                      hx-disabled-elt=".movie-rating-button"
-                      hx-on::after-request="alert('Zapisano!')"
+                      hx-swap="outerHTML settle:2s"
+                      hx-target=".rating-buttons-container"
                       sec:authorize="isAuthenticated()"
                       class="movie-rating-form">
                     <!-- Identyfikator filmu, na który głosujemy-->
                     <p>Twoja ocena</p>
                     <input type="hidden" name="movieId" th:value="${movie.id}">
-                    <div class="movie-rating-buttons" th:fragment="movie-rating-buttons">
-                        <!-- Generujemy 5 gwiazdek w pętli -->
-                        <button class="movie-rating-button"
-                                name="rating"
-                                th:each="i: ${#numbers.sequence(1, 5)}"
-                                th:value="${i}">
-                            <!-- Pełną i pustą gwiazdkę rozróżniamy dodając odpowiednią klasę na podstawie głosu użytkownika -->
-                            <i class="fa-star" th:classappend="${i <= userRating ? 'fa-solid' : 'fa-regular'}"></i>
-                        </button>
+                    <div th:fragment="rating-buttons-container" class="rating-buttons-container">
+                        <div class="movie-rating-buttons">
+                            <!-- Generujemy 5 gwiazdek w pętli -->
+                            <button class="movie-rating-button"
+                                    name="rating"
+                                    th:each="i: ${#numbers.sequence(1, 5)}"
+                                    th:value="${i}">
+                                <!-- Pełną i pustą gwiazdkę rozróżniamy dodając odpowiednią klasę na podstawie głosu użytkownika -->
+                                <i class="fa-star" th:classappend="${i <= userRating ? 'fa-solid' : 'fa-regular'}"></i>
+                            </button>
+                        </div>
+                        <p id="confirmation">Ocena zapisana</p>
                     </div>
-                    <p  id="spinner" class="htmx-indicator">Ocena zapisana</p>
+
                 </form>
                 <!-- Link do logowania wyświetlamy tylko wtedy, gdy użytkownik nie jest zalogowany -->
                 <p sec:authorize="!isAuthenticated()">
-                    <a href="#" th:href="@{/login}">Zaloguj się</a>, aby oddać głos
+                    <a href="#" id="login"
+                       th:hx-get="@{/login}"
+                       hx-target="body"
+                       hx-swap="beforeend"
+                       hx-on::after-request="showLoginDialog()">
+                        Zaloguj się
+                    </a>, aby oddać głos
                 </p>
             </div>
         </section>

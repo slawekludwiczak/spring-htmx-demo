@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
           integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
           crossorigin="anonymous"
-          referrerpolicy="no-referrer" />
+          referrerpolicy="no-referrer"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <script th:src="@{/webjars/htmx.org/dist/htmx.min.js}"></script>
     <script defer src="../static/scripts/common.js" th:src="@{/scripts/common.js}"></script>
     <link rel="stylesheet" href="../static/styles/main.css" th:href="@{/styles/main.css}">
 </head>
@@ -36,9 +37,21 @@
         <li class="menu-item" sec:authorize="hasAnyRole('ADMIN','EDITOR')">
             <a href="#" th:href="@{/admin}">Administracja</a>
         </li>
-        <li class="menu-item">
-            <a href="#" th:href="@{/login}" sec:authorize="!isAuthenticated()">Zaloguj się</a>
-            <a href="#" th:href="@{/logout}" sec:authorize="isAuthenticated()">Wyloguj się</a>
+        <li class="menu-item" sec:authorize="!isAuthenticated()">
+            <a href="#" id="login"
+               th:hx-get="@{/login}"
+               hx-target="body"
+               hx-swap="beforeend"
+               hx-on::after-request="showLoginDialog()">
+                Zaloguj się
+            </a>
+        </li>
+        <li class="menu-item" sec:authorize="isAuthenticated()">
+            <a href="#"
+               th:href="@{/logout}"
+               id="logout">
+                Wyloguj się
+            </a>
         </li>
     </ul>
     <header class="jumbotron">

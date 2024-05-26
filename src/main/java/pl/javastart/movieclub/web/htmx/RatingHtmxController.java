@@ -16,15 +16,17 @@ public class RatingHtmxController {
         this.ratingService = ratingService;
     }
     
-    @PostMapping("/api/ratings")
+    @PostMapping(
+            path = "/api/ratings",
+            headers = Htmx.HEADER_HX_REQUEST
+    )
     public String addMovieRating(@RequestParam long movieId,
                                  @RequestParam int rating,
                                  Model model,
-                                 Authentication authentication) throws InterruptedException {
+                                 Authentication authentication) {
         String currentUserEmail = authentication.getName();
         Rating savedRating = ratingService.addOrUpdateRating(currentUserEmail, movieId, rating);
         model.addAttribute("userRating", savedRating.getRating());
-        Thread.sleep(2000);
-        return "movie::movie-rating-buttons";
+        return "movie::rating-buttons-container";
     }
 }

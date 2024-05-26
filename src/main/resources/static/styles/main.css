@@ -336,16 +336,63 @@ textarea {
     }
 }
 
-.spinner{
-    display:none;
-}
-.htmx-request .htmx-indicator{
-    display:inline;
-}
-.htmx-request.htmx-indicator{
-    display:inline;
+#confirmation {
+    opacity: 0;
+    text-align: center;
+    margin-top: 8px;
+    transition: opacity 1s ease-out;
 }
 
-.movie-rating-button:disabled {
-    background-color: #ff0707;
+.rating-buttons-container.htmx-settling #confirmation {
+    opacity: 1;
+    transition: opacity 1s ease-out;
+}
+
+::backdrop {
+   background-color: #6d6d6d;
+    opacity: 0.90;
+}
+
+dialog {
+    margin: auto;
+    padding: 1em;
+}
+
+dialog[open] {
+    animation: show 250ms ease-in normal;
+}
+@keyframes show {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+dialog > .mc-form > button {
+    margin-top: 16px;
+    background-color: #6d6d6d;
+    color: white;
+    border: none;
+}
+
+dialog > .heading,
+dialog > .login-error,
+dialog > .registration-link {
+    color: #6d6d6d;
+    text-align: center;
+}
+
+dialog > .login-error {
+    color: red;
+    margin: 16px 0;
+}
+
+dialog > .close {
+    display: flex;
+    justify-content: end;
+    color: #6d6d6d;
+    font-size: 20px;
+    cursor: pointer;
 }
