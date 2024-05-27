@@ -27,7 +27,7 @@ class FileStorageServiceTest {
 
     @Test
     void shouldSaveTextFileWithRandomName() {
-        String randomFilename = UUID.randomUUID().toString() + ".txt";
+        String randomFilename = UUID.randomUUID() + ".txt";
         MockMultipartFile mockMultipartFile = new MockMultipartFile(
                 randomFilename,
                 randomFilename,

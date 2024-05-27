@@ -1,0 +1,9 @@
+spring:
+  liquibase:
+    contexts: dev
+  web:
+    resources:
+      static-locations: classpath:/static/,file:uploads/
+app:
+  storage:
+    location: uploads
