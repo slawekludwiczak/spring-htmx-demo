@@ -280,6 +280,10 @@ textarea {
     text-align: center;
 }
 
+.mc-form img {
+    max-width: 285px;
+}
+
 .notification-bar {
     text-align: center;
     background-color: #ffc107;

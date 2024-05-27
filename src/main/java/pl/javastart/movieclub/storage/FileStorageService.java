@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.Files;
@@ -44,7 +47,19 @@ public class FileStorageService {
     }
 
     public String saveImage(MultipartFile file) {
-        return saveFile(file, imageStorageLocation);
+        Path filePath = createFilePath(file, imageStorageLocation);
+        try {
+            BufferedImage originalImage = ImageIO.read(file.getInputStream());
+            Image resultImage = originalImage.getScaledInstance(200, 285, Image.SCALE_DEFAULT);
+            BufferedImage bufferedImage = new BufferedImage(200, 285, BufferedImage.TYPE_INT_ARGB);
+            Graphics buffGraphics = bufferedImage.getGraphics();
+            buffGraphics.drawImage(resultImage, 0, 0, null);
+            buffGraphics.dispose();
+            ImageIO.write(bufferedImage, "png", filePath.toFile());
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
+        return filePath.getFileName().toString();
     }
 
     public String saveFile(MultipartFile file) {

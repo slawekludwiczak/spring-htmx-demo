@@ -5,11 +5,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.javastart.movieclub.domain.genre.GenreService;
 import pl.javastart.movieclub.domain.genre.dto.GenreDto;
 import pl.javastart.movieclub.domain.movie.MovieService;
+import pl.javastart.movieclub.domain.movie.dto.MovieDto;
 import pl.javastart.movieclub.domain.movie.dto.MovieSaveDto;
 
 import java.util.List;
@@ -33,12 +33,21 @@ public class MovieManagementController {
         return "admin/movie-form";
     }
 
-    @PostMapping("/admin/dodaj-film")
+    @PostMapping("/admin/zapisz-film")
     public String addMovie(MovieSaveDto movie, RedirectAttributes redirectAttributes) {
-        movieService.addMovie(movie);
+        movieService.saveMovie(movie);
         redirectAttributes.addFlashAttribute(
                 AdminController.NOTIFICATION_ATTRIBUTE,
                 "Film %s został zapisany".formatted(movie.getTitle()));
         return "redirect:/admin";
+    }
+
+    @GetMapping("/admin/edytuj-film")
+    public String editMovieForm(@RequestParam("movieId") Long movieId, Model model) {
+        List<GenreDto> allGenres = genreService.findAllGenres();
+        model.addAttribute("genres", allGenres);
+        MovieDto movieToUpdate = movieService.findMovieById(movieId).orElseThrow();
+        model.addAttribute("movie", movieToUpdate);
+        return "admin/movie-form";
     }
 }

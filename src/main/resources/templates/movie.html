@@ -36,6 +36,9 @@
                     <p class="movie-summary-item" th:text="${movie.shortDescription}">
                         Podróż odważnego hobbita i jego towarzyszy w poszukiwaniu pierścienia.
                     </p>
+                    <p sec:authorize="hasRole(T(pl.javastart.movieclub.config.security.CustomSecurityConfig).ADMIN_ROLE)">
+                        <a th:href="@{/admin/edytuj-film(movieId=${movie.id})}">Edytuj film</a>
+                    </p>
                 </div>
             </div>
             <!-- Ocena -->

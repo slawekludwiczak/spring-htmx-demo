@@ -1,8 +1,7 @@
 package pl.javastart.movieclub.domain.movie.dto;
 
-import org.springframework.web.multipart.MultipartFile;
-
 public class MovieSaveDto {
+    private Long id;
     private String title;
     private String originalTitle;
     private String shortDescription;
@@ -11,7 +10,15 @@ public class MovieSaveDto {
     private Integer releaseYear;
     private String genre;
     private boolean promoted;
-    private MultipartFile poster;
+    private String poster;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
@@ -77,11 +84,11 @@ public class MovieSaveDto {
         this.promoted = promoted;
     }
 
-    public MultipartFile getPoster() {
+    public String getPoster() {
         return poster;
     }
 
-    public void setPoster(MultipartFile poster) {
+    public void setPoster(String poster) {
         this.poster = poster;
     }
 }

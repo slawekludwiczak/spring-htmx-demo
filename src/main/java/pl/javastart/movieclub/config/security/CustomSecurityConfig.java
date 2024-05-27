@@ -23,9 +23,9 @@ import java.io.IOException;
 
 @Configuration
 public class CustomSecurityConfig {
-    private static final String USER_ROLE = "USER";
-    private static final String EDITOR_ROLE = "EDITOR";
-    private static final String ADMIN_ROLE = "ADMIN";
+    public static final String USER_ROLE = "USER";
+    public static final String EDITOR_ROLE = "EDITOR";
+    public static final String ADMIN_ROLE = "ADMIN";
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((authz) -> authz

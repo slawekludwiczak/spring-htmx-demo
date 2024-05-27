@@ -31,10 +31,26 @@ function closeDialog(dialog) {
 
 function processLogin(event) {
     if (event.detail.successful) {
-        console.log('login success');
         location.reload();
     } else {
-        console.log("login failed");
         document.getElementsByClassName("login-error")[0].hidden = false;
     }
+}
+
+function fileUpload() {
+    const fileField = document.getElementById('poster-upload')
+    const formData = new FormData();
+    formData.append("file", fileField.files[0]);
+    fetch('/admin/images', {
+        method: 'POST',
+        body: formData
+    })
+        .then((response) => response.json())
+        .then(jsonResponse => {
+            const movieCover = document.getElementById('movieCover');
+            movieCover.src = `/img/${jsonResponse.fileName}`;
+            movieCover.hidden = false;
+            const poster = document.getElementById('poster');
+            poster.value = jsonResponse.fileName;
+        });
 }

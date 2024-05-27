@@ -42,8 +42,13 @@ public class MovieService {
                 .toList();
     }
 
-    public void addMovie(MovieSaveDto movieToSave) {
-        Movie movie = new Movie();
+    public void saveMovie(MovieSaveDto movieToSave) {
+        Movie movie;
+        if (movieToSave.getId() == null) {
+            movie = new Movie();
+        } else {
+            movie = movieRepository.findById(movieToSave.getId()).orElseThrow();
+        }
         movie.setTitle(movieToSave.getTitle());
         movie.setOriginalTitle(movieToSave.getOriginalTitle());
         movie.setPromoted(movieToSave.isPromoted());
@@ -53,10 +58,7 @@ public class MovieService {
         movie.setYoutubeTrailerId(movieToSave.getYoutubeTrailerId());
         Genre genre = genreRepository.findByNameIgnoreCase(movieToSave.getGenre()).orElseThrow();
         movie.setGenre(genre);
-        if (movieToSave.getPoster() != null && !movieToSave.getPoster().isEmpty()) {
-            String savedFileName = fileStorageService.saveImage(movieToSave.getPoster());
-            movie.setPoster(savedFileName);
-        }
+        movie.setPoster(movieToSave.getPoster());
         movieRepository.save(movie);
     }
 
