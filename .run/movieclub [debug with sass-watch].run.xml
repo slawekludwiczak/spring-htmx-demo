@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="movieclub [debug with sass-watch]" type="CompoundRunConfigurationType">
+    <toRun name="movieclub [dart-sass:watch-sass]" type="MavenRunConfiguration" />
+    <toRun name="movieclub [main]" type="SpringBootApplicationConfigurationType" />
+    <method v="2" />
+  </configuration>
+</component>

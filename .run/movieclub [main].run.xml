@@ -1,0 +1,17 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="movieclub [main]" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <option name="ACTIVE_PROFILES" value="dev-h2" />
+    <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+    <module name="movieclub" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="pl.javastart.movieclub.MovieclubApplication" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="pl.javastart.movieclub.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
