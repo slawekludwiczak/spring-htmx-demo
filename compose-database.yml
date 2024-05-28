@@ -1,0 +1,23 @@
+name: movieclub-database
+
+services:
+  application:
+    build: .
+    image: slawekludwiczak/movieclub
+    environment:
+      - "DB_URL"
+      - "DB_USERNAME"
+      - "DB_PASSWORD"
+      - "STORAGE_LOCATION"
+      - "SPRING_PROFILES_ACTIVE"
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: wget --spider localhost:8080
+      interval: 5s
+      timeout: 1s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  db:

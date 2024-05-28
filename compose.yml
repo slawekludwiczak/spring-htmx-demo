@@ -1,41 +1,5 @@
 name: movieclub
 
-services:
-  mysql:
-    image: mysql:8.4.0
-    container_name: mysql
-    environment:
-      - "MYSQL_ROOT_PASSWORD=${DB_PASSWORD}"
-      - "MYSQL_DATABASE=${DB_NAME}"
-    volumes:
-      - db:/var/lib/mysql
-    healthcheck:
-      test: mysqladmin ping --protocol tcp
-      interval: 5s
-      timeout: 1s
-      retries: 3
-      start_period: 5s
-
-  application:
-    build: .
-    image: slawekludwiczak/movieclub
-    environment:
-      - "DB_URL"
-      - "DB_USERNAME"
-      - "DB_PASSWORD"
-      - "STORAGE_LOCATION"
-      - "SPRING_PROFILES_ACTIVE"
-    depends_on:
-      mysql:
-        condition: service_healthy
-    ports:
-      - "8080:8080"
-    healthcheck:
-      test: wget --spider localhost:8080
-      interval: 5s
-      timeout: 1s
-      retries: 3
-      start_period: 10s
-
-volumes:
-  db:
+include:
+  - compose-database.yml
+  - compose-application.yml
