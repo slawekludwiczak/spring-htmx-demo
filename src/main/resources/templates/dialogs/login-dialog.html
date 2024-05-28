@@ -11,6 +11,7 @@
     </span>
     <h2 class="heading">Zaloguj się</h2>
     <form th:hx-post="@{/login}"
+          hx-swap="none"
           hx-on::after-request="processLogin(event)"
           method="post"
           class="mc-form">
