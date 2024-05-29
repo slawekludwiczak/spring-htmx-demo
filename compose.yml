@@ -4,6 +4,3 @@ include:
   - compose-database.yml
   - compose-application.yml
   - compose-nginx.yml
-
-networks:
-  movieclub:

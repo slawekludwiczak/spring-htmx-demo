@@ -1,5 +1,3 @@
-name: nginx-manager
-
 services:
   nginx-manager:
     image: 'jc21/nginx-proxy-manager:latest'
@@ -12,8 +10,6 @@ services:
     volumes:
       - nginx-data:/data
       - nginx-letsencrypt:/etc/letsencrypt
-    networks:
-      - movieclub
 
 volumes:
   nginx-data:

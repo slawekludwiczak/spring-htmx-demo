@@ -1,9 +1,8 @@
-name: movieclub-application
-
 services:
   application:
     build: .
     image: slawekludwiczak/movieclub
+    container_name: movieclub
     environment:
       - "DB_URL"
       - "DB_USERNAME"
@@ -19,5 +18,3 @@ services:
       timeout: 1s
       retries: 3
       start_period: 10s
-    networks:
-      - movieclub

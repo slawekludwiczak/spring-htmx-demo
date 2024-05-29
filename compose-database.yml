@@ -1,5 +1,3 @@
-name: movieclub-database
-
 services:
   mysql:
     image: mysql:8.4.0
@@ -15,8 +13,6 @@ services:
       timeout: 1s
       retries: 3
       start_period: 5s
-    networks:
-      - movieclub
 
 volumes:
   db:
