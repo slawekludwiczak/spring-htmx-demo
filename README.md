@@ -21,6 +21,10 @@ Use compound run configuration `movieclub [debug with sass-watch]` to run applic
 
 For other IDE's run `pl.javastart.movieclub.MovieclubApplication` and then `mvn dart-sass:watch-sass`
 
+## Demo
+
+http://movieclub.ludigi.com/
+
 ## Screenshots
 
 ![movieclub_1.png](docs/img/movieclub_1.png)
