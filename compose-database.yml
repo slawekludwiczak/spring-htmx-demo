@@ -1,23 +1,20 @@
 name: movieclub-database
 
 services:
-  application:
-    build: .
-    image: slawekludwiczak/movieclub
+  mysql:
+    image: mysql:8.4.0
+    container_name: mysql
     environment:
-      - "DB_URL"
-      - "DB_USERNAME"
-      - "DB_PASSWORD"
-      - "STORAGE_LOCATION"
-      - "SPRING_PROFILES_ACTIVE"
-    ports:
-      - "8080:8080"
+      - "MYSQL_ROOT_PASSWORD=${DB_PASSWORD}"
+      - "MYSQL_DATABASE=${DB_NAME}"
+    volumes:
+      - db:/var/lib/mysql
     healthcheck:
-      test: wget --spider localhost:8080
+      test: mysqladmin ping --protocol tcp
       interval: 5s
       timeout: 1s
       retries: 3
-      start_period: 10s
+      start_period: 5s
 
 volumes:
   db:

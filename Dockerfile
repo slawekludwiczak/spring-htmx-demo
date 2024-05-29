@@ -8,6 +8,7 @@ RUN --mount=type=cache,target=/root/.m2/ ./mvnw clean package
 
 FROM eclipse-temurin:21-alpine AS application
 COPY --from=maven-build /build/target/movieclub-*.jar /opt/app.jar
+COPY /demo /opt/uploads/img
 WORKDIR /opt
 EXPOSE 8080
 ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "app.jar"]
