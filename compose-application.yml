@@ -13,11 +13,11 @@ services:
     depends_on:
       mysql:
         condition: service_healthy
-    ports:
-      - "8080:8080"
     healthcheck:
       test: wget --spider localhost:8080
       interval: 5s
       timeout: 1s
       retries: 3
       start_period: 10s
+    networks:
+      - movieclub
