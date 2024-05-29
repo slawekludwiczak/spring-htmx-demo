@@ -1,18 +1,18 @@
 package pl.javastart.movieclub.demo;
 
 import jakarta.annotation.PostConstruct;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
-import pl.javastart.movieclub.domain.movie.MovieRepository;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.SimpleFileVisitor;
 import java.nio.file.StandardCopyOption;
 import java.util.stream.Stream;
 
@@ -24,17 +24,20 @@ import java.util.stream.Stream;
 @Profile("demo")
 @DependsOn("fileStorageService")
 class DemoDataImporter {
+    private final Logger logger = LoggerFactory.getLogger(DemoDataImporter.class);
     private final String imageStorageLocation;
 
-    public DemoDataImporter(@Value("${app.storage.location}") String storageLocation,
-                            MovieRepository movieRepository) {
+    public DemoDataImporter(@Value("${app.storage.location}") String storageLocation) {
         this.imageStorageLocation = storageLocation + "/img/";
     }
 
     @PostConstruct
     void importPosters() throws IOException, URISyntaxException {
         Path demoDirectory = Path.of(DemoDataImporter.class.getResource("/demo/").toURI().getPath());
-
+        logger.info("Importing data from %s to %s".formatted(
+                demoDirectory,
+                imageStorageLocation
+        ));
         try (Stream<Path> demoFiles = Files.walk(demoDirectory)) {
             demoFiles
                     .filter(Files::isRegularFile)
@@ -52,5 +55,6 @@ class DemoDataImporter {
                             }
                     );
         }
+        logger.info("Import completed");
     }
 }
