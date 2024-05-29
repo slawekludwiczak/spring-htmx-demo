@@ -1,6 +1,6 @@
 --liquibase formatted sql
 --changeset splitStatements:true endDelimiter:;
-insert into movie (title, original_title, release_year, promoted, genre_id, description, short_description, youtube_trailer_id) values ('Goodbye Solo', 'Captain from Castile', 1995, false, 9, 'Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.
+insert into movie (title, original_title, release_year, promoted, genre_id, description, short_description, youtube_trailer_id, poster) values ('Goodbye Solo', 'Captain from Castile', 1995, false, 9, 'Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.
 
 Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.
 
@@ -8,8 +8,8 @@ Fusce consequat. Nulla nisl. Nunc nisl.
 
 Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.
 
-In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.', 'Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam.', 'JfVOs4VSpmA');
-insert into movie (title, original_title, release_year, promoted, genre_id, description, short_description, youtube_trailer_id) values ('Winchester ''73', 'Destinées, Les (Destinées sentimentales, Les)', 2011, false, 4, 'Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.
+In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.', 'Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam.', 'JfVOs4VSpmA', 'goodbye_solo.jpg');
+insert into movie (title, original_title, release_year, promoted, genre_id, description, short_description, youtube_trailer_id, poster) values ('Winchester ''73', 'Destinées, Les (Destinées sentimentales, Les)', 2011, false, 4, 'Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.
 
 Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.
 
@@ -27,15 +27,15 @@ Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.
 
 Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.
 
-Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.', 'Quisque porta volutpat erat.', 'JfVOs4VSpmA');
-insert into movie (title, original_title, release_year, promoted, genre_id, description, short_description, youtube_trailer_id) values ('Wrong Turn 2: Dead End', 'Zatoichi''s Vengeance (Zatôichi no uta ga kikoeru) (Zatôichi 13)', 2006, true, 1, 'Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.
+Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.', 'Quisque porta volutpat erat.', 'JfVOs4VSpmA', 'Winchester73.jpg');
+insert into movie (title, original_title, release_year, promoted, genre_id, description, short_description, youtube_trailer_id, poster) values ('Wrong Turn 2: Dead End', 'Zatoichi''s Vengeance (Zatôichi no uta ga kikoeru) (Zatôichi 13)', 2006, true, 1, 'Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.
 
 Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.
 
 Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.
 
-Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.', 'Duis consequat dui nec nisi volutpat eleifend.', 'V75dMMIW2B4');
-insert into movie (title, original_title, release_year, promoted, genre_id, description, short_description, youtube_trailer_id) values ('Big Bully', 'No. 1 Ladies'' Detective Agency, The', 1999, false, 4, 'In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.
+Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.', 'Duis consequat dui nec nisi volutpat eleifend.', 'V75dMMIW2B4', 'wrong_turn_2.jpg');
+insert into movie (title, original_title, release_year, promoted, genre_id, description, short_description, youtube_trailer_id, poster) values ('Big Bully', 'No. 1 Ladies'' Detective Agency, The', 1999, false, 4, 'In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.
 
 Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.
 
@@ -51,12 +51,12 @@ Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est ris
 
 Fusce consequat. Nulla nisl. Nunc nisl.
 
-Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.', 'Aliquam non mauris.', 'aWzlQ2N6qqg');
-insert into movie (title, original_title, release_year, promoted, genre_id, description, short_description, youtube_trailer_id) values ('Cargo', 'International House', 2009, true, 8, 'Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.
+Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.', 'Aliquam non mauris.', 'aWzlQ2N6qqg', 'big_bully.jpg');
+insert into movie (title, original_title, release_year, promoted, genre_id, description, short_description, youtube_trailer_id, poster) values ('Cargo', 'International House', 2009, true, 8, 'Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.
 
 Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
 
-Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.', 'In est risus, auctor sed, tristique in, tempus sit amet, sem.', 'JfVOs4VSpmA');
+Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.', 'In est risus, auctor sed, tristique in, tempus sit amet, sem.', 'JfVOs4VSpmA', 'cargo.jpg');
 insert into movie (title, original_title, release_year, promoted, genre_id, description, short_description, youtube_trailer_id) values ('Zoom', 'Swedish Love Story, A (Kärlekshistoria, En)', 1996, true, 5, 'Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.
 
 Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.
