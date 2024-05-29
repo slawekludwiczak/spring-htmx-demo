@@ -23,7 +23,7 @@ For other IDE's run `pl.javastart.movieclub.MovieclubApplication` and then `mvn 
 
 ## Demo
 
-http://movieclub.ludigi.com/
+https://movieclub.ludigi.com/
 
 ## Screenshots
 
