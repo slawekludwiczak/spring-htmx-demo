@@ -67,7 +67,7 @@ public class CustomSecurityConfig {
 
         @Override
         public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-            boolean isHtmxRequest = request.getHeader(Htmx.HEADER_HX_REQUEST) == null;
+            boolean isHtmxRequest = request.getHeader(Htmx.HEADER_HX_REQUEST) != null;
             if (isHtmxRequest) {
                 response.sendError(HttpStatus.UNAUTHORIZED.value(), HttpStatus.UNAUTHORIZED.getReasonPhrase());
             } else {
